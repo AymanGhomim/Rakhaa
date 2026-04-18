@@ -123,7 +123,7 @@ export default function VisionSection() {
             {/* العمود الأيسر: الرؤية */}
             <div className="p-8 md:p-12 lg:p-16 flex flex-col justify-center text-right">
               <motion.span
-                className="font-mono font-semibold text-[11px] uppercase tracking-[0.12em] text-brushed-gold mb-6 block"
+                className="font-mono font-bold text-[18px] md:text-[22px] uppercase tracking-[0.25em] text-brushed-gold mb-4 block"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.15 }}

@@ -1,4 +1,6 @@
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
+
+type SplitType = "chars" | "words" | "none";
 
 interface CharacterRevealProps {
   text: string;
@@ -6,37 +8,45 @@ interface CharacterRevealProps {
   delay?: number;
   staggerDelay?: number;
   duration?: number;
-  as?: 'h1' | 'h2' | 'h3' | 'p' | 'span' | 'div';
+  as?: "h1" | "h2" | "h3" | "p" | "span" | "div";
+  split?: SplitType;
 }
 
 const PRESTIGE_EASE = [0.22, 1, 0.36, 1] as const;
 
 export default function CharacterReveal({
   text,
-  className = '',
+  className = "",
   delay = 0,
-  staggerDelay = 0.02,
+  staggerDelay = 0.04,
   duration = 0.6,
-  as: Tag = 'div',
+  as: Tag = "div",
+  split = "words", // 👈 الافتراضي كلمات (أفضل UX)
 }: CharacterRevealProps) {
-  const characters = Array.from(text);
+  const items =
+    split === "chars"
+      ? Array.from(text)
+      : split === "words"
+        ? text.split(" ")
+        : [text];
+
   const containerVariants = {
     hidden: {},
     visible: {
       transition: {
-        staggerChildren: staggerDelay,
+        staggerChildren: split === "none" ? 0 : staggerDelay,
         delayChildren: delay,
       },
     },
   };
 
-  const characterVariants = {
+  const itemVariants = {
     hidden: {
-      y: '100%',
+      y: "100%",
       opacity: 0,
     },
     visible: {
-      y: '0%',
+      y: "0%",
       opacity: 1,
       transition: {
         duration,
@@ -52,16 +62,25 @@ export default function CharacterReveal({
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.15 }}
+        viewport={{ once: true, amount: 0.2 }}
       >
-        {characters.map((char, index) => (
-          <span key={index} className="inline-block overflow-hidden">
+        {items.map((item, index) => (
+          <span
+            key={index}
+            className="inline-block overflow-hidden"
+            style={{
+              marginRight: split === "words" ? "0.25em" : 0,
+            }}
+          >
             <motion.span
               className="inline-block"
-              variants={characterVariants}
-              style={{ display: 'inline-block', whiteSpace: char === ' ' ? 'pre' : 'normal' }}
+              variants={itemVariants}
+              style={{
+                display: "inline-block",
+                whiteSpace: "pre",
+              }}
             >
-              {char === ' ' ? '\u00A0' : char}
+              {item}
             </motion.span>
           </span>
         ))}

@@ -1,63 +1,66 @@
 const footerColumns = [
   {
-    heading: 'Company',
+    heading: "الشركة",
     links: [
-      { label: 'About', href: '#about' },
-      { label: 'Our Vision', href: '#vision' },
-      { label: 'Quality Standards', href: '#' },
-      { label: 'Sustainability', href: '#' },
+      { label: "من نحن", href: "#about" },
+      { label: "رؤيتنا", href: "#vision" },
+      { label: "معايير الجودة", href: "#" },
+      { label: "الاستدامة", href: "#" },
     ],
   },
   {
-    heading: 'Products',
+    heading: "المنتجات",
     links: [
-      { label: 'Cardamom', href: '#products' },
-      { label: 'Rice', href: '#products' },
-      { label: 'Dates', href: '#products' },
-      { label: 'Pulses', href: '#products' },
+      { label: "الهيل", href: "#products" },
+      { label: "الأرز", href: "#products" },
+      { label: "التمور", href: "#products" },
+      { label: "البقوليات", href: "#products" },
     ],
   },
   {
-    heading: 'Contact',
+    heading: "تواصل معنا",
     links: [
-      { label: 'info@rakhaa-eg.com', href: 'mailto:info@rakhaa-eg.com' },
-      { label: '+20 100 683 3573', href: 'tel:+201006833573' },
-      { label: 'Mansoura, Egypt', href: '#' },
+      { label: "info@rakhaa-eg.com", href: "mailto:info@rakhaa-eg.com" },
+      { label: "+20 100 683 3573", href: "tel:+201006833573" },
+      { label: "المنصورة، مصر", href: "#" },
     ],
   },
 ];
 
 export default function Footer() {
-  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    if (href.startsWith('#') && href !== '#') {
+  const handleClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string,
+  ) => {
+    if (href.startsWith("#") && href !== "#") {
       e.preventDefault();
       const target = document.querySelector(href);
       if (target) {
-        target.scrollIntoView({ behavior: 'smooth' });
+        target.scrollIntoView({ behavior: "smooth" });
       }
     }
   };
 
   return (
-    <footer className="w-full bg-forest-green">
+    <footer dir="rtl" className="w-full bg-forest-green">
       <div className="max-w-[1280px] mx-auto px-5 md:px-10 py-16">
-        {/* Top Row */}
-        <div className="flex flex-col lg:flex-row justify-between gap-12">
-          {/* Logo & Tagline */}
-          <div className="lg:max-w-[300px]">
+        {/* الصف العلوي */}
+        <div className="flex flex-col lg:flex-row-reverse justify-between gap-12">
+          {/* اللوجو والوصف */}
+          <div className="lg:max-w-[300px] text-right">
             <img
               src="/assets/rakhaa-logo.png"
-              alt="Rakhaa"
-              className="h-12 w-auto mb-4"
-              style={{ filter: 'brightness(0) invert(1)' }}
+              alt="رخاء"
+              className="h-12 w-auto mb-4 ml-auto"
+              style={{ filter: "brightness(0) invert(1)" }}
             />
             <p className="font-sans text-sm text-[rgba(248,250,249,0.6)]">
-              Cultivating Global Trade
+              نزرع تجارة عالمية
             </p>
           </div>
 
-          {/* Link Columns */}
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-8 lg:gap-16">
+          {/* الأعمدة */}
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-8 lg:gap-16 text-right">
             {footerColumns.map((column) => (
               <div key={column.heading}>
                 <h4 className="font-sans font-semibold text-sm text-luxury-white uppercase tracking-[0.04em] mb-4">
@@ -81,20 +84,27 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Divider */}
+        {/* خط فاصل */}
         <div className="border-t border-[rgba(248,250,249,0.1)] my-12" />
 
-        {/* Bottom Row */}
-        <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
+        {/* الصف السفلي */}
+        <div className="flex flex-col sm:flex-row-reverse justify-between items-center gap-4 text-right">
           <p className="font-mono text-xs text-[rgba(248,250,249,0.4)]">
-            &copy; 2025 Rakhaa Agricultural Import & Export. All rights reserved.
+            © 2025 رخاء للاستيراد والتصدير الزراعي. جميع الحقوق محفوظة.
           </p>
+
           <div className="flex gap-6">
-            <a href="#" className="font-mono text-xs text-[rgba(248,250,249,0.4)] hover:text-brushed-gold transition-colors duration-300">
-              Privacy Policy
+            <a
+              href="#"
+              className="font-mono text-xs text-[rgba(248,250,249,0.4)] hover:text-brushed-gold transition-colors duration-300"
+            >
+              سياسة الخصوصية
             </a>
-            <a href="#" className="font-mono text-xs text-[rgba(248,250,249,0.4)] hover:text-brushed-gold transition-colors duration-300">
-              Terms of Service
+            <a
+              href="#"
+              className="font-mono text-xs text-[rgba(248,250,249,0.4)] hover:text-brushed-gold transition-colors duration-300"
+            >
+              شروط الاستخدام
             </a>
           </div>
         </div>

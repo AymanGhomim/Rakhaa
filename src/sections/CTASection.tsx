@@ -1,19 +1,21 @@
-import CharacterReveal from '@/components/CharacterReveal';
-import WordReveal from '@/components/WordReveal';
-import Button from '@/components/Button';
-import FloatingBlob from '@/components/FloatingBlob';
-import { Mail, Phone, MapPin } from 'lucide-react';
+import CharacterReveal from "@/components/CharacterReveal";
+import WordReveal from "@/components/WordReveal";
+import Button from "@/components/Button";
+import FloatingBlob from "@/components/FloatingBlob";
+import { Mail, Phone, MapPin } from "lucide-react";
 
 export default function CTASection() {
   return (
     <section
       id="contact"
+      dir="rtl"
       className="relative w-full py-24 md:py-32 overflow-hidden"
       style={{
-        background: 'linear-gradient(135deg, #14532D 0%, #0F3D22 50%, #14532D 100%)',
+        background:
+          "linear-gradient(135deg, #14532D 0%, #0F3D22 50%, #14532D 100%)",
       }}
     >
-      {/* Floating Gradient Blobs */}
+      {/* عناصر زخرفية متحركة */}
       <FloatingBlob
         color="rgba(34, 197, 94, 0.12)"
         size={600}
@@ -42,10 +44,10 @@ export default function CTASection() {
         yOffset={-25}
       />
 
-      {/* Content */}
+      {/* المحتوى */}
       <div className="relative z-10 max-w-[700px] mx-auto px-5 md:px-10 text-center">
         <CharacterReveal
-          text="Ready to Source Premium Agricultural Products?"
+          text="جاهز لتوريد منتجات زراعية عالية الجودة؟"
           as="h2"
           className="font-sans font-bold text-3xl md:text-5xl text-luxury-white leading-[1.1] tracking-[-0.01em] mb-6"
           staggerDelay={0.015}
@@ -54,7 +56,7 @@ export default function CTASection() {
 
         <div className="mb-10">
           <WordReveal
-            text="Let's discuss how Rakhaa can meet your commodity needs. Whether you're looking for bulk cardamom, premium rice, or seasonal dates — we deliver quality you can trust."
+            text="دعنا نناقش كيف يمكن لرخاء تلبية احتياجاتك من السلع. سواء كنت تبحث عن هيل بكميات كبيرة، أو أرز فاخر، أو تمور موسمية — نحن نقدم جودة يمكنك الوثوق بها."
             as="p"
             className="font-sans text-base md:text-lg text-[rgba(248,250,249,0.8)] leading-[1.7] max-w-[560px] mx-auto"
             staggerDelay={0.03}
@@ -63,28 +65,32 @@ export default function CTASection() {
         </div>
 
         <Button variant="gold" size="large" href="mailto:info@rakhaa-eg.com">
-          Start a Conversation
+          ابدأ التواصل
         </Button>
 
-        {/* Contact Info Row */}
+        {/* معلومات التواصل */}
         <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-10">
           <a
             href="mailto:info@rakhaa-eg.com"
             className="flex items-center gap-2 text-[rgba(248,250,249,0.8)] hover:text-luxury-white transition-opacity duration-300"
           >
-            <Mail size={16} className="flex-shrink-0" />
             <span className="font-sans text-sm">info@rakhaa-eg.com</span>
+            <Mail size={16} className="flex-shrink-0" />
           </a>
+
           <a
             href="tel:+201006833573"
             className="flex items-center gap-2 text-[rgba(248,250,249,0.8)] hover:text-luxury-white transition-opacity duration-300"
           >
-            <Phone size={16} className="flex-shrink-0" />
             <span className="font-sans text-sm">+20 100 683 3573</span>
+            <Phone size={16} className="flex-shrink-0" />
           </a>
+
           <span className="flex items-center gap-2 text-[rgba(248,250,249,0.8)]">
+            <span className="font-sans text-sm">
+              ١٠ شارع الجمهورية، المنصورة
+            </span>
             <MapPin size={16} className="flex-shrink-0" />
-            <span className="font-sans text-sm">10 El-Gomhoreya St, Mansoura</span>
           </span>
         </div>
       </div>

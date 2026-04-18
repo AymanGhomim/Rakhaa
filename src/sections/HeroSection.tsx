@@ -1,22 +1,22 @@
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef } from 'react';
-import CharacterReveal from '@/components/CharacterReveal';
-import WordReveal from '@/components/WordReveal';
-import Button from '@/components/Button';
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
+import CharacterReveal from "@/components/CharacterReveal";
+import WordReveal from "@/components/WordReveal";
+import Button from "@/components/Button";
 
 const PRESTIGE_EASE = [0.22, 1, 0.36, 1] as const;
 
 const stats = [
-  { number: '50+', label: 'Countries Served' },
-  { number: '12+', label: 'Years of Excellence' },
-  { number: '100%', label: 'Quality Assured' },
+  { number: "+50", label: "دولة نخدمها" },
+  { number: "+12", label: "سنة من الخبرة" },
+  { number: "100%", label: "جودة مضمونة" },
 ];
 
 export default function HeroSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
-    offset: ['start start', 'end start'],
+    offset: ["start start", "end start"],
   });
 
   const bgY = useTransform(scrollYProgress, [0, 1], [0, -150]);
@@ -25,38 +25,40 @@ export default function HeroSection() {
   return (
     <section
       ref={sectionRef}
+      dir="rtl"
       className="relative min-h-[100dvh] w-full overflow-hidden flex items-center"
-      style={{ minHeight: '700px' }}
+      style={{ minHeight: "700px" }}
     >
-      {/* Background Image with Ken Burns */}
+      {/* الخلفية */}
       <motion.div className="absolute inset-0 z-0" style={{ y: bgY }}>
         <div className="absolute inset-0 ken-burns">
           <img
             src="/assets/hero-aerial-farm.jpg"
-            alt="Aerial view of agricultural fields"
+            alt="منظر جوي لحقول زراعية"
             className="w-full h-full object-cover"
           />
         </div>
-        {/* Dark Overlay */}
         <div className="absolute inset-0 bg-[rgba(20,83,45,0.72)]" />
       </motion.div>
 
-      {/* Content */}
+      {/* المحتوى */}
       <div className="relative z-10 w-full max-w-[1280px] mx-auto px-5 md:px-10 lg:px-20 py-32">
-        <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
-          {/* Left Column - Text */}
-          <div className="lg:w-[55%] text-center lg:text-left">
+        {/* 👇 التعديل الأساسي هنا */}
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-16 lg:gap-32">
+          {/* النص */}
+          <div className="w-full lg:w-[55%] text-center lg:text-right">
             <CharacterReveal
-              text="Global Agricultural Trade, Reimagined."
+              text="تجارة زراعية عالمية برؤية جديدة"
               as="h1"
               className="font-sans font-bold text-4xl md:text-5xl lg:text-[64px] text-luxury-white leading-[1.05] tracking-[-0.02em] max-w-[640px] mx-auto lg:mx-0"
               delay={0.3}
               staggerDelay={0.02}
               duration={0.6}
             />
+
             <div className="mt-6">
               <WordReveal
-                text="Connecting Egyptian farms to the world. Premium cardamom, rice, dates, and more — sourced with integrity, delivered with excellence."
+                text="نربط مزارع مصر بالعالم. هيل فاخر، أرز عالي الجودة، تمور مميزة، والمزيد — مصادرنا موثوقة وتسليمنا يتم بأعلى معايير الاحتراف."
                 as="p"
                 className="font-sans text-base md:text-lg text-[rgba(248,250,249,0.85)] leading-relaxed max-w-[480px] mx-auto lg:mx-0"
                 delay={0.8}
@@ -64,6 +66,7 @@ export default function HeroSection() {
                 duration={0.5}
               />
             </div>
+
             <motion.div
               className="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
               initial={{ opacity: 0, y: 20 }}
@@ -71,24 +74,24 @@ export default function HeroSection() {
               transition={{ duration: 0.6, delay: 1.0, ease: PRESTIGE_EASE }}
             >
               <Button variant="primary" href="#products">
-                Explore Products
+                استعرض المنتجات
               </Button>
               <Button variant="ghost" inverted href="#contact">
-                Get in Touch
+                تواصل معنا
               </Button>
             </motion.div>
           </div>
 
-          {/* Right Column - Floating Stat Card */}
-          <div className="lg:w-[45%] flex justify-center lg:justify-end">
+          {/* الكارت */}
+          <div className="w-full lg:w-[45%] flex justify-center lg:justify-start">
             <motion.div
               style={{ y: cardY }}
-              initial={{ opacity: 0, x: 40 }}
+              initial={{ opacity: 0, x: -40 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.7, delay: 1.2, ease: PRESTIGE_EASE }}
               className="relative"
             >
-              {/* Decorative Gold Arc */}
+              {/* قوس زخرفي */}
               <motion.svg
                 className="absolute -inset-8 md:-inset-12 w-[calc(100%+64px)] md:w-[calc(100%+96px)] h-[calc(100%+64px)] md:h-[calc(100%+96px)] pointer-events-none"
                 viewBox="0 0 400 400"
@@ -105,7 +108,7 @@ export default function HeroSection() {
                 />
               </motion.svg>
 
-              {/* Glass Card */}
+              {/* الكارت */}
               <div className="bg-[rgba(248,250,249,0.72)] backdrop-blur-[20px] saturate-[180%] border border-white/30 shadow-[0_8px_32px_rgba(20,83,45,0.08)] rounded-xl p-6 md:p-8 min-w-[260px]">
                 <div className="space-y-5">
                   {stats.map((stat, index) => (

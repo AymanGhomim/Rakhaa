@@ -3,10 +3,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import Button from "@/components/Button";
 
 const NAV_LINKS = [
-  { label: "About", href: "#about" },
-  { label: "Products", href: "#products" },
-  { label: "Vision", href: "#vision" },
-  { label: "Contact", href: "#contact" },
+  { label: "من نحن", href: "#about" },
+  { label: "المنتجات", href: "#products" },
+  { label: "الرؤية", href: "#vision" },
+  { label: "تواصل معنا", href: "#contact" },
 ];
 
 const PRESTIGE_EASE = [0.22, 1, 0.36, 1] as const;
@@ -30,14 +30,13 @@ export default function Navbar() {
     e.preventDefault();
     setMobileOpen(false);
     const target = document.querySelector(href);
-    if (target) {
-      target.scrollIntoView({ behavior: "smooth" });
-    }
+    if (target) target.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
     <>
       <motion.nav
+        dir="rtl"
         className="fixed top-0 left-0 right-0 z-50 w-full px-6 md:px-16 py-1 flex items-center justify-between transition-all duration-400"
         style={{
           background: scrolled
@@ -52,16 +51,17 @@ export default function Navbar() {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6, ease: PRESTIGE_EASE }}
       >
-        {/* Logo */}
+        {/* Logo (يمين) */}
         <a href="#" className="flex-shrink-0">
           <img
             src="/assets/rakhaa-logo.png"
-            alt="Rakhaa"
+            alt="ركاء"
             className="h-14 md:h-18 w-auto"
           />
         </a>
+        
 
-        {/* Desktop Nav Links */}
+        {/* Links (النص) */}
         <div className="hidden md:flex items-center gap-8">
           {NAV_LINKS.map((link) => (
             <a
@@ -75,18 +75,18 @@ export default function Navbar() {
           ))}
         </div>
 
-        {/* Desktop CTA */}
+        {/* CTA (شمال) */}
         <div className="hidden md:block">
           <Button href="#contact" size="default">
-            Get in Touch
+            تواصل الآن
           </Button>
         </div>
 
-        {/* Mobile Hamburger */}
+        {/* Mobile Button */}
         <button
           className="md:hidden flex flex-col gap-[6px] p-2 cursor-pointer"
           onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label="Toggle menu"
+          aria-label="فتح القائمة"
         >
           <motion.span
             className="block w-6 h-[2px] bg-deep-charcoal origin-center"
@@ -134,15 +134,9 @@ export default function Navbar() {
               </motion.a>
             ))}
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.4, ease: PRESTIGE_EASE }}
-            >
-              <Button href="#contact" onClick={() => setMobileOpen(false)}>
-                Get in Touch
-              </Button>
-            </motion.div>
+            <Button href="#contact" onClick={() => setMobileOpen(false)}>
+              تواصل الآن
+            </Button>
           </motion.div>
         )}
       </AnimatePresence>

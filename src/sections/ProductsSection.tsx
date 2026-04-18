@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import CharacterReveal from "@/components/CharacterReveal";
 import ProductCard, { type Product } from "@/components/ProductCard";
 import ProductModal from "@/components/ProductModal";
 

@@ -164,7 +164,10 @@ export default function ProductModal({ product, onClose }: ProductModalProps) {
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8" dir="rtl">
                 {/* Right Column - الوصف */}
                 <motion.div className="text-right" variants={itemVariants}>
-                  <h3 className="font-sans font-bold text-lg text-[#8B5A2B] mb-4 flex items-center gap-2 justify-end">
+                  <h3
+                    className="font-sans font-bold text-lg text-[#8B5A2B] mb-4 flex items-center gap-2 justify-end"
+                    dir="ltr"
+                  >
                     <span>وصف المنتج</span>
                     <div className="w-8 h-[2px] bg-[#D4A574]"></div>
                   </h3>
@@ -173,7 +176,10 @@ export default function ProductModal({ product, onClose }: ProductModalProps) {
                   </p>
 
                   {/* مميزات إضافية */}
-                  <div className="bg-white rounded-[16px] p-5 border border-[#D4A574]/20 shadow-sm">
+                  <div
+                    className="bg-white rounded-[16px] p-5 border border-[#D4A574]/20 shadow-sm"
+                    dir="ltr"
+                  >
                     <h4 className="font-sans font-semibold text-sm text-[#8B5A2B] mb-3">
                       المميزات الرئيسية
                     </h4>
@@ -200,7 +206,7 @@ export default function ProductModal({ product, onClose }: ProductModalProps) {
                 <motion.div variants={itemVariants}>
                   <h3
                     className="font-sans font-bold text-lg text-[#8B5A2B] mb-4 flex items-center gap-2 justify-end"
-                    dir="rtl"
+                    dir="ltr"
                   >
                     <span>المواصفات الفنية</span>
                     <div className="w-8 h-[2px] bg-[#D4A574]"></div>
@@ -208,7 +214,7 @@ export default function ProductModal({ product, onClose }: ProductModalProps) {
 
                   <div
                     className="bg-white rounded-[16px] overflow-hidden border border-[#D4A574]/20 shadow-sm"
-                    dir="rtl"
+                    dir="ltr"
                   >
                     {/* Table Header */}
                     <div className="bg-gradient-to-r from-[#8B5A2B] to-[#A0522D] text-white p-3 text-center">
@@ -238,7 +244,7 @@ export default function ProductModal({ product, onClose }: ProductModalProps) {
                   {/* معلومات إضافية */}
                   <div
                     className="mt-4 bg-[#8B5A2B]/5 rounded-[12px] p-4 border border-[#D4A574]/10"
-                    dir="rtl"
+                    dir="ltr"
                   >
                     <p className="text-xs text-[#5C4033] leading-relaxed text-right">
                       <span className="font-bold text-[#8B5A2B]">ملاحظة:</span>{" "}

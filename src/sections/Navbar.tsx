@@ -4,8 +4,8 @@ import Button from "@/components/Button";
 
 const NAV_LINKS = [
   { label: "من نحن", href: "#about" },
-  { label: "المنتجات", href: "#products" },
   { label: "الرؤية", href: "#vision" },
+  { label: "المنتجات", href: "#products" },
   { label: "تواصل معنا", href: "#contact" },
 ];
 
